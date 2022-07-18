@@ -34,7 +34,7 @@ output:
 
 output-values:
   enabled: false
-  from: "output_values.json"
+  from: ""
 
 sort:
   enabled: true

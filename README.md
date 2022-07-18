@@ -1,2 +1,3 @@
-# modules
-Terraform Azure Modules
+<!-- BEGIN_TF_DOCS -->
+<!-- END_TF_DOCS -->
+
