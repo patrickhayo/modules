@@ -12,11 +12,14 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-        submodules: recursive
-
+    - name: Checkout submodules
+      uses: textbook/git-checkout-submodule-action@master
+      with:
+        remote: true
     - name: Generate REAME.md
       uses: terraform-docs/gh-actions@v1.0.0
       with:
