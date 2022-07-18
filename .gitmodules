@@ -1,1 +1,4 @@
 
+[submodule "identity"]
+	path = identity
+	url = https://github.com/patrickhayo/azr-tf-module-identity.git
