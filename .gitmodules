@@ -2,3 +2,6 @@
 [submodule "identity"]
 	path = identity
 	url = https://github.com/patrickhayo/azr-tf-module-identity.git
+[submodule "modules/identity"]
+	path = modules/identity
+	url = https://github.com/patrickhayo/azr-tf-module-identity.git
