@@ -3,8 +3,8 @@ formatter: "markdown table"
 
 version: ""
 
-header-from: .github/header.md
-footer-from: .github/footer.md
+header-from: ""
+footer-from: ""
 
 recursive:
   enabled: true
