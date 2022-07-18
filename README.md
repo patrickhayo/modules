@@ -1,9 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
+## Resources
 
-
-## Modules
-
-No modules.
-
-
+No resources.
 <!-- END_TF_DOCS -->
