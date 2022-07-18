@@ -3,7 +3,6 @@ formatter: "markdown table"
 
 recursive:
   enabled: true
-  path: .
 
 sections:
   hide: []
