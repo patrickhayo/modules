@@ -16,8 +16,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-    - name: Checkout submodules
-      run: git submodule update --init --recursive
 
     - name: Generate REAME.md
       uses: terraform-docs/gh-actions@v1.0.0
