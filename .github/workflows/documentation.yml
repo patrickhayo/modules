@@ -27,3 +27,4 @@ jobs:
         output-method: inject
         git-push: "true"
         recursive: "true"
+        recursive-path: src
