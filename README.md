@@ -3,6 +3,10 @@
 <!-- BEGIN_TF_DOCS -->
 
 
+## Resources
+
+No resources.
+
 ## Modules
 
 No modules.
