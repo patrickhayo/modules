@@ -1,24 +1,8 @@
 # Terraform Modules for Azure
 
 <!-- BEGIN_TF_DOCS -->
-## Providers
+## Modules
 
-No providers.
-
-## Requirements
-
-No requirements.
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
+No modules.
 
 <!-- END_TF_DOCS -->
