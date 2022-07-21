@@ -12,17 +12,9 @@ sections:
   hide-all: false # deprecated in v0.13.0, removed in v0.15.0
   show-all: true  # deprecated in v0.13.0, removed in v0.15.0
 
-content: |-  
-  {{ .Providers }}
-  
-  {{ .Requirements }}
-  
-  {{ .Resources }}
-  
-  {{ .Inputs }}
-    
-  {{ .Outputs }}
-    
+content: |-      
+  {{ .Modules }}
+        
 output:
   file: README.md
   mode: inject
