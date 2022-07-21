@@ -2,8 +2,8 @@
 formatter: "markdown table"
 
 recursive:
-  enabled: true
-  recursive-path: src
+  enabled: false
+  recursive-path: modules
 
 sections:
   hide: []
@@ -13,7 +13,7 @@ sections:
   show-all: true  # deprecated in v0.13.0, removed in v0.15.0
 
 content: |-
-  {{ .Resources }}
+  {{ .Header }}
   
 output:
   file: README.md

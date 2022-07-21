@@ -1,3 +1,0 @@
-[submodule "src/identity"]
-	path = src/identity
-	url = https://github.com/patrickhayo/azr-tf-module-identity.git
