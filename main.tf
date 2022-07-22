@@ -10,3 +10,6 @@ module "vnet" {
   source = "https://github.com/patrickhayo/azr-tf-module-vnet"
 }
 
+module "vnet" {
+  source = "https://github.com/patrickhayo/azr-tf-module-route-table"
+}

@@ -7,3 +7,6 @@
 [submodule "vnet"]
 	path = vnet
 	url = https://github.com/patrickhayo/azr-tf-module-vnet
+[submodule "rt"]
+	path = rt
+	url = https://github.com/patrickhayo/azr-tf-module-route-table
