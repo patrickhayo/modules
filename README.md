@@ -1,13 +1,17 @@
 # Terraform Modules for Azure
 
 <!-- BEGIN_TF_DOCS -->
-## Modules
+## Prerequisites
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_identities"></a> [identities](#module\_identities) | https://github.com/patrickhayo/azr-tf-module-identity | n/a |
-| <a name="module_privatednszone"></a> [privatednszone](#module\_privatednszone) | https://github.com/patrickhayo/azr-tf-module-private-dns-zone | n/a |
+- [Terraform](https://releases.hashicorp.com/terraform/)
 
+## Providers
+
+No providers.
+
+## Requirements
+
+No requirements.
 <!-- END_TF_DOCS -->
 
 ## Authors
