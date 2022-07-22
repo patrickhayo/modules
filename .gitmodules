@@ -4,3 +4,6 @@
 [submodule "privatednszone"]
 	path = privatednszone
 	url = https://github.com/patrickhayo/azr-tf-module-private-dns-zone.git
+[submodule "vnet"]
+	path = vnet
+	url = https://github.com/patrickhayo/azr-tf-module-vnet
