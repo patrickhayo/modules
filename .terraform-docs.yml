@@ -2,8 +2,12 @@ formatter: markdown table
 header-from: header.tf
 
 content: |-      
-  {{ .Modules }}
-        
+  {{ .Header }} 
+   
+  {{ .Providers }}
+
+  {{ .Requirements }}
+  
 output:
   file: README.md
   mode: inject
