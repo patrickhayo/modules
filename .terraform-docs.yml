@@ -4,10 +4,8 @@ header-from: header.tf
 content: |-      
   {{ .Header }} 
    
-  {{ .Providers }}
+  {{ .Modules }}
 
-  {{ .Requirements }}
-  
 output:
   file: README.md
   mode: inject
