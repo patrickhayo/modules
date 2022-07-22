@@ -1,16 +1,5 @@
-# .terraform-docs.yml
-formatter: "markdown table"
-
-recursive:
-  enabled: false
-  recursive-path: modules
-
-sections:
-  hide: []
-  show: []
-
-  hide-all: false # deprecated in v0.13.0, removed in v0.15.0
-  show-all: true  # deprecated in v0.13.0, removed in v0.15.0
+formatter: markdown table
+header-from: header.tf
 
 content: |-      
   {{ .Modules }}
