@@ -13,3 +13,8 @@ module "vnet" {
 module "rt" {
   source = "https://github.com/patrickhayo/azr-tf-module-route-table"
 }
+
+module "nat" {
+  source = "https://github.com/patrickhayo/azr-tf-module-nat-gateway"
+}
+
