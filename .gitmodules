@@ -10,3 +10,6 @@
 [submodule "rt"]
 	path = rt
 	url = https://github.com/patrickhayo/azr-tf-module-route-table
+[submodule "nat"]
+	path = nat
+	url = https://github.com/patrickhayo/azr-tf-module-nat-gateway
