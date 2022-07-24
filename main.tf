@@ -18,3 +18,6 @@ module "nat" {
   source = "https://github.com/patrickhayo/azr-tf-module-nat-gateway"
 }
 
+module "nsg" {
+  source = "https://github.com/patrickhayo/azr-tf-module-nsg"
+}

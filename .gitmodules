@@ -13,3 +13,6 @@
 [submodule "nat"]
 	path = nat
 	url = https://github.com/patrickhayo/azr-tf-module-nat-gateway
+[submodule "nsg"]
+	path = nsg
+	url = https://github.com/patrickhayo/azr-tf-module-nsg
