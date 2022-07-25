@@ -1,0 +1,190 @@
+name: $(BuildDefinitionName)_$(date:yyyyMMdd)$(rev:.r)
+
+trigger: none
+
+variables:
+- group: AZR-NN-PYXH-POC
+- name: deployment
+  value: dev/example
+- name: env
+  value: dev
+- name: state-blob-resource-group
+  value: rg-TERRAFORM-TFSTATE-WEU
+- name: state-blob-accout-location
+  value: westeurope
+- name: state-blob-account-name
+  value: sa2022052101
+- name: state-blob-sku-name
+  value: Standard_LRS
+- name: state-blob-container-name
+  value: example
+- name: tf-version
+  value: latest
+- name: tf-state-file-suffix
+  value: terraform.state
+
+parameters:
+- name: terraform_task
+  displayName: Terraform Task
+  type: string
+  default: plan
+  values:
+    - plan
+    - apply
+    - destroy
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: backend
+    displayName: "Terraform Backend"
+    jobs:
+    - job: azurerm
+      displayName: BACKEND
+      steps:
+      - bash: |
+          az login --service-principal --username $ARM_CLIENT_ID --password $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
+          az account set --subscription $ARM_SUBSCRIPTION_ID
+          source azurerm.sh
+        displayName: azurerm
+        name: setVariable
+        workingDirectory: $(deployment)/ci/scripts
+        env:
+          TF_STATE_BLOB_ACCOUNT_RESOURCE_GROUP: $(state-blob-resource-group)
+          TF_STATE_BLOB_ACCOUT_LOCATION:        $(state-blob-accout-location)
+          TF_STATE_BLOB_ACCOUNT_NAME:           $(state-blob-account-name)$(env)
+          TF_STATE_BLOB_ACCOUNT_SKU:            $(state-blob-sku-name)
+          TF_STATE_BLOB_CONTAINER_NAME:         $(state-blob-container-name)
+          TF_STATE_BLOB_FILE:                   $(env).$(tf-state-file-suffix)
+          ARM_SUBSCRIPTION_ID:                  $(arm-subscription-id)
+          ARM_CLIENT_ID:                        $(arm-client-id)
+          ARM_CLIENT_SECRET:                    $(arm-client-secret)
+          ARM_TENANT_ID:                        $(arm-tenant-id)
+
+  - stage: plan
+    displayName: "Terraform Plan"
+    dependsOn: [backend]
+    condition: or(eq('${{ parameters.terraform_task }}', 'plan'), eq('${{ parameters.terraform_task }}', 'apply'))
+    jobs:
+    - job: terraform_plan
+      variables:
+        TF_SAS_TOKEN : $[ stageDependencies.backend.azurerm.outputs['setVariable.SasToken'] ]
+      displayName: PLAN
+      steps:
+      - task: TerraformInstaller@0
+        condition: succeeded()
+        inputs:
+         terraformVersion: $(tf-version)
+        displayName: "install: [$(tf-version)]"
+      - bash: |
+          echo "TF_STATE_BLOB_SAS_TOKEN: [$TF_STATE_BLOB_SAS_TOKEN]"
+          terraform init \
+            -backend-config="storage_account_name=$TF_STATE_BLOB_ACCOUNT_NAME" \
+            -backend-config="container_name=$TF_STATE_BLOB_CONTAINER_NAME" \
+            -backend-config="key=$TF_STATE_BLOB_FILE" \
+            -backend-config="sas_token=$TF_STATE_BLOB_SAS_TOKEN"
+          terraform plan -out tfplan
+        displayName: "runas: [${{ parameters.terraform_task }}]"
+        workingDirectory: $(deployment)
+        env:
+          TF_STATE_BLOB_ACCOUNT_NAME:   $(state-blob-account-name)$(env)
+          TF_STATE_BLOB_CONTAINER_NAME: $(state-blob-container-name)
+          TF_STATE_BLOB_FILE:           $(env).$(tf-state-file-suffix)
+          TF_STATE_BLOB_SAS_TOKEN:      $(TF_SAS_TOKEN)
+          ARM_SUBSCRIPTION_ID:          $(arm-subscription-id)
+          ARM_CLIENT_ID:                $(arm-client-id)
+          ARM_CLIENT_SECRET:            $(arm-client-secret)
+          ARM_TENANT_ID:                $(arm-tenant-id)
+      - task: PublishBuildArtifacts@1
+        displayName: "pulish: [$(Build.BuildId) : tfplan]"
+        condition: succeeded()
+        inputs:
+          PathtoPublish: $(deployment)/tfplan
+          ArtifactName: "$(Build.BuildId)"
+          publishLocation: "Container"
+
+  - stage: apply
+    displayName: "Terraform Apply"
+    dependsOn: [backend, plan]
+    condition: eq('${{ parameters.terraform_task }}', 'apply')
+    jobs:
+    - job: terraform_apply
+      variables:
+        TF_SAS_TOKEN : $[ stageDependencies.backend.azurerm.outputs['setVariable.SasToken'] ]
+      displayName: APPLY
+      steps:
+      - task: DownloadBuildArtifacts@0
+        displayName: "download: [$(Build.BuildId) : tfplan]"
+        inputs:
+          buildType: "current"
+          downloadType: "single"
+          artifactName: "$(Build.BuildId)"
+          downloadPath: "$(Build.ArtifactStagingDirectory)"
+          extractTars: false
+      - task: TerraformInstaller@0
+        condition: succeeded()
+        inputs:
+         terraformVersion: $(tf-version)
+        displayName: "install version: [$(tf-version)]"
+      - bash: |
+          echo "TF_STATE_BLOB_SAS_TOKEN: [$TF_STATE_BLOB_SAS_TOKEN]"
+          terraform init \
+            -backend-config="storage_account_name=$TF_STATE_BLOB_ACCOUNT_NAME" \
+            -backend-config="container_name=$TF_STATE_BLOB_CONTAINER_NAME" \
+            -backend-config="key=$TF_STATE_BLOB_FILE" \
+            -backend-config="sas_token=$TF_STATE_BLOB_SAS_TOKEN"
+          terraform apply -input=false -auto-approve $(Build.ArtifactStagingDirectory)/$(Build.BuildId)/tfplan
+        displayName: "runas: [${{ parameters.terraform_task }}]"
+        workingDirectory: $(deployment)
+        env:
+          TF_STATE_BLOB_ACCOUNT_NAME:   $(state-blob-account-name)$(env)
+          TF_STATE_BLOB_CONTAINER_NAME: $(state-blob-container-name)
+          TF_STATE_BLOB_FILE:           $(env).$(tf-state-file-suffix)
+          TF_STATE_BLOB_SAS_TOKEN:      $(TF_SAS_TOKEN)
+          ARM_SUBSCRIPTION_ID:          $(arm-subscription-id)
+          ARM_CLIENT_ID:                $(arm-client-id)
+          ARM_CLIENT_SECRET:            $(arm-client-secret)
+          ARM_TENANT_ID:                $(arm-tenant-id)
+
+  - stage: destroy
+    displayName: "Terraform Destory"
+    dependsOn: [backend]
+    condition: eq('${{ parameters.terraform_task }}', 'destroy')
+    jobs:
+    - job: terraform_destory
+      variables:
+        TF_SAS_TOKEN : $[ stageDependencies.backend.azurerm.outputs['setVariable.SasToken'] ]
+      displayName: DESTROY
+      steps:
+      - task: TerraformInstaller@0
+        inputs:
+         terraformVersion: $(tf-version)
+        displayName: "install version: [$(tf-version)]"
+      - bash: |
+          echo "TF_STATE_BLOB_SAS_TOKEN: [$TF_STATE_BLOB_SAS_TOKEN]"
+          terraform init \
+            -backend-config="storage_account_name=$TF_STATE_BLOB_ACCOUNT_NAME" \
+            -backend-config="container_name=$TF_STATE_BLOB_CONTAINER_NAME" \
+            -backend-config="key=$TF_STATE_BLOB_FILE" \
+            -backend-config="sas_token=$TF_STATE_BLOB_SAS_TOKEN"
+          terraform plan -destroy -out tfdestroy
+          terraform apply -input=false -auto-approve tfdestroy
+        displayName: "runas: [${{ parameters.terraform_task }}]"
+        workingDirectory: $(deployment)
+        env:
+          TF_STATE_BLOB_ACCOUNT_NAME:   $(state-blob-account-name)$(env)
+          TF_STATE_BLOB_CONTAINER_NAME: $(state-blob-container-name)
+          TF_STATE_BLOB_FILE:           $(env).$(tf-state-file-suffix)
+          TF_STATE_BLOB_SAS_TOKEN:      $(TF_SAS_TOKEN)
+          ARM_SUBSCRIPTION_ID:          $(arm-subscription-id)
+          ARM_CLIENT_ID:                $(arm-client-id)
+          ARM_CLIENT_SECRET:            $(arm-client-secret)
+          ARM_TENANT_ID:                $(arm-tenant-id)
+      - task: PublishBuildArtifacts@1
+        displayName: "pulish: [$(Build.BuildId) : tfdestroy]"
+        condition: succeeded()
+        inputs:
+          PathtoPublish: $(deployment)/tfdestroy
+          ArtifactName: "$(Build.BuildId)"
+          publishLocation: "Container"
