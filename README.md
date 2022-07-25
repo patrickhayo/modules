@@ -10,6 +10,7 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_bastionhost"></a> [bastionhost](#module\_bastionhost) | https://github.com/patrickhayo/azr-tf-module-bastion-host | n/a |
+| <a name="module_firewall"></a> [firewall](#module\_firewall) | https://github.com/patrickhayo/azr-tf-module-firewall | n/a |
 | <a name="module_identities"></a> [identities](#module\_identities) | https://github.com/patrickhayo/azr-tf-module-identity | n/a |
 | <a name="module_log"></a> [log](#module\_log) | https://github.com/patrickhayo/azr-tf-module-log-analytics-workspace | n/a |
 | <a name="module_nat"></a> [nat](#module\_nat) | https://github.com/patrickhayo/azr-tf-module-nat-gateway | n/a |
