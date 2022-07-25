@@ -22,3 +22,6 @@
 [submodule "log"]
 	path = log
 	url = https://github.com/patrickhayo/azr-tf-module-log-analytics-workspace.git
+[submodule "privateendpoint"]
+	path = privateendpoint
+	url = https://github.com/patrickhayo/azr-tf-module-private-endpoint.git

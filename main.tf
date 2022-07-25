@@ -29,3 +29,7 @@ module "nsg" {
 module "log" {
   source = "https://github.com/patrickhayo/azr-tf-log-analytics-workspace"
 }
+
+module "privateendpoint" {
+  source = "https://github.com/patrickhayo/azr-tf-module-private-endpoint"
+}
