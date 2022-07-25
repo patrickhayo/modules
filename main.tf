@@ -37,3 +37,8 @@ module "privateendpoint" {
 module "bastionhost" {
   source = "https://github.com/patrickhayo/azr-tf-module-bastion-host"
 }
+
+module "firewall" {
+  source = "https://github.com/patrickhayo/azr-tf-module-firewall"
+}
+
