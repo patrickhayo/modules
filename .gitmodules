@@ -16,3 +16,6 @@
 [submodule "nsg"]
 	path = nsg
 	url = https://github.com/patrickhayo/azr-tf-module-nsg
+[submodule "subnet"]
+	path = subnet
+	url = https://github.com/patrickhayo/azr-tf-module-subnet
