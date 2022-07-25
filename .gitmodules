@@ -25,3 +25,6 @@
 [submodule "privateendpoint"]
 	path = privateendpoint
 	url = https://github.com/patrickhayo/azr-tf-module-private-endpoint.git
+[submodule "bastionhost"]
+	path = bastionhost
+	url = https://github.com/patrickhayo/azr-tf-module-bastion-host.git

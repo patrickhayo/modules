@@ -33,3 +33,7 @@ module "log" {
 module "privateendpoint" {
   source = "https://github.com/patrickhayo/azr-tf-module-private-endpoint"
 }
+
+module "privateendpoint" {
+  source = "https://github.com/patrickhayo/azr-tf-module-bastion-host"
+}
