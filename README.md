@@ -14,7 +14,7 @@
 | <a name="module_nat"></a> [nat](#module\_nat) | https://github.com/patrickhayo/azr-tf-module-nat-gateway | n/a |
 | <a name="module_nsg"></a> [nsg](#module\_nsg) | https://github.com/patrickhayo/azr-tf-module-nsg | n/a |
 | <a name="module_privatednszone"></a> [privatednszone](#module\_privatednszone) | https://github.com/patrickhayo/azr-tf-module-private-dns-zone | n/a |
-| <a name="module_privateendpoint"></a> [privateendpoint](#module\_privateendpoint) | https://github.com/patrickhayo/azr-tf-module-private-endpoint | n/a |
+| <a name="module_privateendpoint"></a> [privateendpoint](#module\_privateendpoint) | https://github.com/patrickhayo/azr-tf-module-bastion-host | n/a |
 | <a name="module_rt"></a> [rt](#module\_rt) | https://github.com/patrickhayo/azr-tf-module-route-table | n/a |
 | <a name="module_subnet"></a> [subnet](#module\_subnet) | https://github.com/patrickhayo/azr-tf-module-subnet | n/a |
 | <a name="module_vnet"></a> [vnet](#module\_vnet) | https://github.com/patrickhayo/azr-tf-module-vnet | n/a |
