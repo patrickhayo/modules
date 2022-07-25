@@ -25,3 +25,7 @@ module "nat" {
 module "nsg" {
   source = "https://github.com/patrickhayo/azr-tf-module-nsg"
 }
+
+module "log" {
+  source = "https://github.com/patrickhayo/azr-tf-log-analytics-workspace"
+}
