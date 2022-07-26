@@ -44,3 +44,7 @@
 	path = _example/firewall-network
 	url = https://github.com/patrickhayo/azr-tf-example-firewall-network.git
 	branch = main
+[submodule "keyvault"]
+	path = keyvault
+	url = https://github.com/patrickhayo/azr-tf-module-keyvault.git
+	branch = main
