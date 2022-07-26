@@ -42,3 +42,6 @@ module "firewall" {
   source = "https://github.com/patrickhayo/azr-tf-module-firewall"
 }
 
+module "keyvault" {
+  source = "https://github.com/patrickhayo/azr-tf-module-keyvault"
+}
