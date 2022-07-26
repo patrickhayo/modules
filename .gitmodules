@@ -16,13 +16,6 @@
 [submodule "privateendpoint"]
 	path = privateendpoint
 	url = https://github.com/patrickhayo/azr-tf-module-private-endpoint.git
-[submodule "log"]
-	path = log
-	url = https://github.com/patrickhayo/azr-tf-module-log-analytics-workspace.git
-[submodule "privatednszone"]
-	path = privatednszone
-	url = https://github.com/patrickhayo/azr-tf-module-private-dns-zone.git
-	branch = main
 [submodule "bastionhost"]
 	path = bastionhost
 	url = https://github.com/patrickhayo/azr-tf-module-bastion-host.git
@@ -34,4 +27,12 @@
 [submodule "identity"]
 	path = identity
 	url = https://github.com/patrickhayo/azr-tf-module-identity.git
+	branch = main
+[submodule "privatednszone"]
+	path = privatednszone
+	url = https://github.com/patrickhayo/azr-tf-module-private-dns-zone.git
+	branch = main
+[submodule "log"]
+	path = log
+	url = https://github.com/patrickhayo/azr-tf-module-log-analytics-workspace.git
 	branch = main
