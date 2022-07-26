@@ -19,9 +19,6 @@
 [submodule "subnet"]
 	path = subnet
 	url = https://github.com/patrickhayo/azr-tf-module-subnet
-[submodule "log"]
-	path = log
-	url = https://github.com/patrickhayo/azr-tf-module-log-analytics-workspace.git
 [submodule "privateendpoint"]
 	path = privateendpoint
 	url = https://github.com/patrickhayo/azr-tf-module-private-endpoint.git
@@ -31,3 +28,6 @@
 [submodule "firewall"]
 	path = firewall
 	url = https://github.com/patrickhayo/azr-tf-module-firewall.git
+[submodule "log"]
+	path = log
+	url = https://github.com/patrickhayo/azr-tf-module-log-analytics-workspace.git
