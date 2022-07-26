@@ -1,6 +1,3 @@
-[submodule "identity"]
-	path = identity
-	url = https://github.com/patrickhayo/azr-tf-module-identity.git
 [submodule "vnet"]
 	path = vnet
 	url = https://github.com/patrickhayo/azr-tf-module-vnet
@@ -33,4 +30,8 @@
 [submodule "firewall"]
 	path = firewall
 	url = https://github.com/patrickhayo/azr-tf-module-firewall.git
+	branch = main
+[submodule "identity"]
+	path = identity
+	url = https://github.com/patrickhayo/azr-tf-module-identity.git
 	branch = main
