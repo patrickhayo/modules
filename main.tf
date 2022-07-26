@@ -10,6 +10,10 @@ module "vnet" {
   source = "https://github.com/patrickhayo/azr-tf-module-vnet"
 }
 
+module "vnet-data" {
+  source = "https://github.com/patrickhayo/azr-tf-data-module-vnet"
+}
+
 module "subnet" {
   source = "https://github.com/patrickhayo/azr-tf-module-subnet"
 }

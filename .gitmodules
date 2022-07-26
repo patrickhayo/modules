@@ -48,3 +48,7 @@
 	path = keyvault
 	url = https://github.com/patrickhayo/azr-tf-module-keyvault.git
 	branch = main
+[submodule "vnet-data"]
+	path = vnet-data
+	url = https://github.com/patrickhayo/azr-tf-data-module-vnet.git
+	branch = main
