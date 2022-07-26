@@ -36,3 +36,11 @@
 	path = log
 	url = https://github.com/patrickhayo/azr-tf-module-log-analytics-workspace.git
 	branch = main
+[submodule "_example/simple-network"]
+	path = _example/simple-network
+	url = https://github.com/patrickhayo/azr-tf-example-simple-network.git
+	branch = main
+[submodule "_example/firewall-network"]
+	path = _example/firewall-network
+	url = https://github.com/patrickhayo/azr-tf-example-firewall-network.git
+	branch = main
