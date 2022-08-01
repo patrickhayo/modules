@@ -56,3 +56,7 @@
 	path = akscluster
 	url = https://github.com/patrickhayo/azr-tf-module-aks-cluster.git
 	branch = main
+[submodule "aksnodepool"]
+	path = aksnodepool
+	url = https://github.com/patrickhayo/azr-tf-module-aks-node-pool.git
+	branch = main

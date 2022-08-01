@@ -54,3 +54,6 @@ module "akscluster" {
   source = "https://github.com/patrickhayo/azr-tf-module-aks-cluster"
 }
 
+module "aksnodepool" {
+  source = "https://github.com/patrickhayo/azr-tf-module-aks-node-pool"
+}
