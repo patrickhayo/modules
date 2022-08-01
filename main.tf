@@ -49,3 +49,8 @@ module "firewall" {
 module "keyvault" {
   source = "https://github.com/patrickhayo/azr-tf-module-keyvault"
 }
+
+module "akscluster" {
+  source = "https://github.com/patrickhayo/azr-tf-module-aks-cluster"
+}
+

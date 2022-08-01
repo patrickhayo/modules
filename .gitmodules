@@ -52,3 +52,7 @@
 	path = vnet-data
 	url = https://github.com/patrickhayo/azr-tf-data-module-vnet.git
 	branch = main
+[submodule "akscluster"]
+	path = akscluster
+	url = https://github.com/patrickhayo/azr-tf-module-aks-cluster.git
+	branch = main
