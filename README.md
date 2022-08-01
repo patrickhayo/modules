@@ -9,6 +9,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_akscluster"></a> [akscluster](#module\_akscluster) | https://github.com/patrickhayo/azr-tf-module-aks-cluster | n/a |
 | <a name="module_bastionhost"></a> [bastionhost](#module\_bastionhost) | https://github.com/patrickhayo/azr-tf-module-bastion-host | n/a |
 | <a name="module_firewall"></a> [firewall](#module\_firewall) | https://github.com/patrickhayo/azr-tf-module-firewall | n/a |
 | <a name="module_identities"></a> [identities](#module\_identities) | https://github.com/patrickhayo/azr-tf-module-identity | n/a |
