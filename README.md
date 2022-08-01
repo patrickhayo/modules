@@ -21,6 +21,7 @@
 | <a name="module_rt"></a> [rt](#module\_rt) | https://github.com/patrickhayo/azr-tf-module-route-table | n/a |
 | <a name="module_subnet"></a> [subnet](#module\_subnet) | https://github.com/patrickhayo/azr-tf-module-subnet | n/a |
 | <a name="module_vnet"></a> [vnet](#module\_vnet) | https://github.com/patrickhayo/azr-tf-module-vnet | n/a |
+| <a name="module_vnet-data"></a> [vnet-data](#module\_vnet-data) | https://github.com/patrickhayo/azr-tf-data-module-vnet | n/a |
 <!-- END_TF_DOCS -->
 
 ## Authors
